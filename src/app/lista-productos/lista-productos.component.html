@@ -1,0 +1,5 @@
+<ul *ngIf="$Productos | async as productos">
+  <li *ngFor="let producto of productos">
+    <app-producto [producto]="producto"></app-producto>
+  </li>
+</ul>

@@ -1,0 +1,25 @@
+<form class="contenedor-producto" (ngSubmit)="onSubmit()" #crearProductoForm="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="producto.nombre" name="nombre" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Cantidad en stock</mat-label>
+    <input matInput [(ngModel)]="producto.stock" name="stock" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select [(ngModel)]="producto.estadoProducto" [(value)]="producto.estadoProducto" name="estadoProducto" required>
+      <mat-option *ngFor="let estado of listaEstadosProducto" [value]="estado.ID">
+        {{estado.Nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="producto-esDefectuoso">
+    <mat-label>Defectuoso</mat-label>
+    <mat-slide-toggle [(ngModel)]="producto.esDefectuoso" name="esDefectuoso"></mat-slide-toggle>
+  </div>
+  <div class="producto-options">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!crearProductoForm.form.valid">Crear</button>
+  </div>
+</form>
